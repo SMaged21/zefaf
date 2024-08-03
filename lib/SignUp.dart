@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:online_shopping/blogic/firebase/auth.dart';
 import 'SignIn.dart';
 import 'profileSignUp.dart';
 import 'theme.dart';
@@ -13,10 +13,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: SingleChildScrollView(
+      child: Column(
         children: [
           SizedBox(
             height: 100.h,
@@ -60,6 +63,7 @@ class _SignUpState extends State<SignUp> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: _emailController,
               decoration: InputDecoration(
                   hintText: "  Enter your Email",
                   hintStyle: TextStyle(
@@ -89,6 +93,7 @@ class _SignUpState extends State<SignUp> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                   hintText: "  Enter your Password",
@@ -118,10 +123,16 @@ class _SignUpState extends State<SignUp> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ProfileSignUpScreen()));
+              try {
+                Authen.CreateUser(_emailController.text.trim(),
+                    _passwordController.text.trim());
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProfileSignUpScreen()));
+              } catch (e) {
+                print(e);
+              }
             },
             child: Container(
               height: 50.h,
@@ -187,6 +198,11 @@ class _SignUpState extends State<SignUp> {
           )
         ],
       ),
-    );
+    ));
   }
+  // @override
+  // void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  //   super.debugFillProperties(properties);
+  //   properties.add(DiagnosticsProperty<FirebaseAuth>('auth', auth));
+  // }
 }

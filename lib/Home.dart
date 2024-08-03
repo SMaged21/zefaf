@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:online_shopping/product.dart';
+import 'package:online_shopping/Model/Product.dart';
+import 'package:online_shopping/Model/category.dart';
+import 'package:online_shopping/widgets/category.dart';
+import 'package:online_shopping/widgets/product.dart';
 
 import 'cart.dart';
 import 'categories.dart';
@@ -123,9 +126,6 @@ class _HomeState extends State<Home> {
                   Icons.search,
                   size: 30.sp,
                 )),
-            SizedBox(
-              width: 1.w,
-            ),
             IconButton(
                 onPressed: () {
                   Navigator.push(context,
@@ -155,6 +155,28 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 10.h,
             ),
+            Container(
+              width: MediaQuery.sizeOf(context).width,
+              height: 300.h,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  // crossAxisSpacing: 10.w,
+                  // mainAxisSpacing: 10.h,
+                  childAspectRatio: 3 / 4,
+                ),
+                itemCount: 4,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) {
+                  return categoryWidget(
+                      cat: category(
+                          name: "category name", img: "images/headband.jpeg"));
+                },
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               children: [
                 SizedBox(
@@ -179,46 +201,14 @@ class _HomeState extends State<Home> {
                 itemBuilder: (context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductScreen()));
-                      },
-                      child: Container(
-                        width: 150.w,
-                        color: AppColor.primeColor,
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("images/back.jpeg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              width: 120.w,
-                              height: 100.h,
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "Product\n Name",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 20.sp),
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "200\$",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 20.sp),
-                            )
-                          ],
-                        ),
+                    child: productWidget(
+                      product: Product(
+                        productName: "Wedding dress",
+                        productPrice: 400,
+                        productImg1: "images/back.jpeg",
+                        productImg2: "images/download (1).jpeg",
+                        productImg3: "images/headband.jpeg",
+                        productOldPrice: 300,
                       ),
                     ),
                   );
@@ -252,46 +242,14 @@ class _HomeState extends State<Home> {
                 itemBuilder: (context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductScreen()));
-                      },
-                      child: Container(
-                        width: 150.w,
-                        color: AppColor.primeColor,
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("images/back.jpeg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              width: 120.w,
-                              height: 100.h,
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "Product\n Name",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 20.sp),
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "200\$",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 20.sp),
-                            )
-                          ],
-                        ),
+                    child: productWidget(
+                      product: Product(
+                        productName: "Wedding dress",
+                        productPrice: 400,
+                        productImg1: "images/back.jpeg",
+                        productImg2: "images/download (1).jpeg",
+                        productImg3: "images/headband.jpeg",
+                        productOldPrice: 300,
                       ),
                     ),
                   );

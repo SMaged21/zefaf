@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545517663501",
+    "project_id": "zefaf-dedf8",
+    "storage_bucket": "zefaf-dedf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545517663501:android:9704d5ba867849ab9aac44",
+        "android_client_info": {
+          "package_name": "com.example.online_shopping"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOo0ARV70Dg705oWlrYTxJOBzzDS7uyBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

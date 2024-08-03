@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:online_shopping/Model/Product.dart';
+import 'package:online_shopping/widgets/product.dart';
 
-import 'product.dart';
 import 'theme.dart';
 
 class StoreScreen extends StatefulWidget {
@@ -43,53 +44,21 @@ class _StoreScreenState extends State<StoreScreen> {
             ),
             Container(
               width: MediaQuery.sizeOf(context).width,
-              height: 200.h,
+              height: 300.h,
               child: ListView.builder(
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductScreen()));
-                      },
-                      child: Container(
-                        width: 125.w,
-                        color: AppColor.primeColor,
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("images/back.jpeg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              width: 120.w,
-                              height: 100.h,
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "Product\n Name",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 15.sp),
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              "200\$",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 15.sp),
-                            )
-                          ],
-                        ),
+                    child: productWidget(
+                      product: Product(
+                        productName: "Wedding dress",
+                        productPrice: 400,
+                        productImg1: "images/back.jpeg",
+                        productImg2: "images/download (1).jpeg",
+                        productImg3: "images/headband.jpeg",
+                        productOldPrice: 300,
                       ),
                     ),
                   );
@@ -145,53 +114,21 @@ class _StoreScreenState extends State<StoreScreen> {
             ),
             Container(
               width: MediaQuery.sizeOf(context).width,
-              height: 200.h,
+              height: 300.h,
               child: ListView.builder(
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductScreen()));
-                      },
-                      child: Container(
-                        width: 125.w,
-                        color: AppColor.primeColor,
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("images/back.jpeg"),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              width: 120.w,
-                              height: 100.h,
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "Product\n Name",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 15.sp),
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              "200\$",
-                              style: GoogleFonts.lato(
-                                  color: AppColor.fourthColor, fontSize: 15.sp),
-                            )
-                          ],
-                        ),
+                    child: productWidget(
+                      product: Product(
+                        productName: "Wedding dress",
+                        productPrice: 400,
+                        productImg1: "images/back.jpeg",
+                        productImg2: "images/download (1).jpeg",
+                        productImg3: "images/headband.jpeg",
+                        productOldPrice: 300,
                       ),
                     ),
                   );

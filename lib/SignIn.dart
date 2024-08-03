@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:online_shopping/blogic/firebase/auth.dart';
 import 'Home.dart';
 import 'SignUp.dart';
 import 'theme.dart';
@@ -13,10 +14,13 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: SingleChildScrollView(
+      child: Column(
         children: [
           SizedBox(
             height: 100.h,
@@ -60,6 +64,7 @@ class _SignInState extends State<SignIn> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: _emailController,
               decoration: InputDecoration(
                   hintText: "  Enter your Email",
                   hintStyle: TextStyle(
@@ -89,6 +94,7 @@ class _SignInState extends State<SignIn> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                   hintText: "  Enter your Password",
@@ -118,8 +124,14 @@ class _SignInState extends State<SignIn> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Home()));
+              try {
+                Authen.signIn(_emailController.text.trim(),
+                    _passwordController.text.trim());
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              } catch (e) {
+                print(e);
+              }
             },
             child: Container(
               height: 50.h,
@@ -143,7 +155,15 @@ class _SignInState extends State<SignIn> {
             height: 20.h,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              try {
+                Authen.signInWithGoogle();
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              } catch (e) {
+                print(e);
+              }
+            },
             child: Container(
               height: 50.h,
               width: 300.w,
@@ -185,6 +205,6 @@ class _SignInState extends State<SignIn> {
           )
         ],
       ),
-    );
+    ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'SignIn.dart';
@@ -51,7 +52,7 @@ class _WelecomeScreenState extends State<WelecomeScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "SignIn",
+                      AppLocalizations.of(context)!.signIn,
                       style: TextStyle(
                           fontSize: 25.sp,
                           color: Colors.white,
@@ -79,7 +80,7 @@ class _WelecomeScreenState extends State<WelecomeScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "SignUp",
+                      AppLocalizations.of(context)!.signUp,
                       style: TextStyle(
                           fontSize: 25.sp,
                           color: Colors.white,

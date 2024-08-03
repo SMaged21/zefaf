@@ -12,6 +12,13 @@ class profileScreen extends StatefulWidget {
 }
 
 class _profileScreenState extends State<profileScreen> {
+  // User1? user;
+  //
+  // @override
+  // void setState(VoidCallback fn) async {
+  //   user = await FireStore.GetUserInfo();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +72,7 @@ class _profileScreenState extends State<profileScreen> {
           ),
           Center(
             child: Text(
-              "Full Name",
+              "Full name",
               style: TextStyle(
                   color: AppColor.fourthColor,
                   fontSize: 40.sp,
@@ -74,7 +81,7 @@ class _profileScreenState extends State<profileScreen> {
           ),
           Center(
             child: Text(
-              "phone number",
+              "Phone Number",
               style: TextStyle(color: AppColor.fourthColor, fontSize: 20.sp),
             ),
           ),
@@ -94,7 +101,7 @@ class _profileScreenState extends State<profileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "21",
+                      "21".toString(),
                       style: TextStyle(
                           color: AppColor.primeColor,
                           fontSize: 40.sp,

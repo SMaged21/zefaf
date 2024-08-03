@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_shopping/Model/Product.dart';
 import 'package:online_shopping/theme.dart';
 
+// ignore: must_be_immutable
 class ProductScreen extends StatefulWidget {
-  ProductScreen({super.key});
+  Product product;
+  ProductScreen({super.key, required this.product});
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -12,6 +15,14 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   int count = 0;
+  String? backImg;
+
+  @override
+  void initState() {
+    super.initState();
+    backImg = widget.product.productImg1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +35,7 @@ class _ProductScreenState extends State<ProductScreen> {
             height: 320.h,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/back.jpeg"), fit: BoxFit.cover),
+                  image: AssetImage(backImg!), fit: BoxFit.cover),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -53,36 +64,57 @@ class _ProductScreenState extends State<ProductScreen> {
               SizedBox(
                 width: 30.w,
               ),
-              Container(
-                  height: 80.h,
-                  width: 80.w,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/back.jpeg"),
-                        fit: BoxFit.cover),
-                  )),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    backImg = widget.product.productImg1;
+                  });
+                },
+                child: Container(
+                    height: 80.h,
+                    width: 80.w,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(widget.product.productImg1!),
+                          fit: BoxFit.cover),
+                    )),
+              ),
               SizedBox(
                 width: 30.w,
               ),
-              Container(
-                  height: 80.h,
-                  width: 80.w,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/back.jpeg"),
-                        fit: BoxFit.cover),
-                  )),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    backImg = widget.product.productImg2;
+                  });
+                },
+                child: Container(
+                    height: 80.h,
+                    width: 80.w,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(widget.product.productImg2!),
+                          fit: BoxFit.cover),
+                    )),
+              ),
               SizedBox(
                 width: 30.w,
               ),
-              Container(
-                  height: 80.h,
-                  width: 80.w,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/back.jpeg"),
-                        fit: BoxFit.cover),
-                  )),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    backImg = widget.product.productImg3;
+                  });
+                },
+                child: Container(
+                    height: 80.h,
+                    width: 80.w,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(widget.product.productImg3!),
+                          fit: BoxFit.cover),
+                    )),
+              ),
             ],
           ),
           SizedBox(
