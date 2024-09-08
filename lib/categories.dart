@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'theme.dart';
+import 'package:online_shopping/theme/colors.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -16,8 +15,8 @@ class _ProfileScreenState extends State<CategoriesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.secondaryColor,
-        foregroundColor: AppColor.primeColor,
+        backgroundColor: secondaryColor,
+        foregroundColor: primeColor,
         title: Center(
           child: Text(
             "Categories",
@@ -47,7 +46,7 @@ class _ProfileScreenState extends State<CategoriesScreen> {
                 onTap: () {},
                 child: Container(
                   height: 100.h,
-                  color: AppColor.primeColor,
+                  color: primeColor,
                   child: Row(
                     children: [
                       Container(
@@ -66,7 +65,7 @@ class _ProfileScreenState extends State<CategoriesScreen> {
                       Text(
                         "Product Name\n       200\$",
                         style: GoogleFonts.lato(
-                            color: AppColor.fourthColor, fontSize: 20.sp),
+                            color: fourthColor, fontSize: 20.sp),
                       ),
                     ],
                   ),
